@@ -16,11 +16,15 @@ function trafficLightGeneratorNo2() {
     console.log("The traffic light is on", currentState);
     createMessage(currentState);
 
-    if (currentState === "green" || currentState === "orange") {
-      trafficLight.stateIndex++;
-    } else if (currentState === "red") {
-      trafficLight.stateIndex = 0;
-      cycle++;
-    }
+    currentState === "green" || currentState === "orange"
+      ? trafficLight.stateIndex++
+      : ((trafficLight.stateIndex = 0), cycle++);
+
+    // if (currentState === "green" || currentState === "orange") {
+    //   trafficLight.stateIndex++;
+    // } else if (currentState === "red") {
+    //   trafficLight.stateIndex = 0;
+    //   cycle++;
+    // }
   }
 }
