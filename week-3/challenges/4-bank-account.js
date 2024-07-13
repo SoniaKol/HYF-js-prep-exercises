@@ -27,11 +27,38 @@ const bankAccount = {
   ],
 };
 
-const donateMoney = (amount, onSuccess, onFail) => {
-  // TODO complete this function
+const checkBalance = (amount) => {
+  const balanceDiff = bankAccount.currentBalance - amount;
+  if (balanceDiff > 0) {
+    return true;
+  } else {
+    return false;
+  }
 };
+
+const changeBalance = (amount, reason) => {
+  bankAccount.transactions.push({
+    prevAmount: bankAccount.currentBalance,
+    newAmount: (bankAccount.currentBalance -= amount),
+    reason: reason,
+  });
+};
+
+const runTransaction = (amount, reason, successFoo, failFoo) => {
+  if (checkBalance(amount)) {
+    successFoo();
+    changeBalance(amount, reason);
+  } else {
+    failFoo();
+  }
+};
+
+const donateMoney = (amount, onSuccess, onFail) => {
+  runTransaction(amount, "Donation", onSuccess, onFail);
+};
+
 const payRent = (amount, onSuccess, onFail) => {
-  // TODO complete this function
+  runTransaction(amount, "Rent", onSuccess, onFail);
 };
 
 /**
