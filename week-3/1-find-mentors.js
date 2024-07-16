@@ -8,10 +8,9 @@ import { mentors } from "./hyf.js";
  *  ['John', 'Mary']
  */
 const possibleMentorsForModule = (moduleName) => {
-  const possibleMentors = mentors
+  return mentors
     .filter((mentor) => mentor.canTeach.includes(moduleName))
     .map((mentor) => mentor.name);
-  return possibleMentors;
 };
 
 console.log(possibleMentorsForModule("using-apis"));
@@ -30,3 +29,5 @@ const findMentorForModule = (moduleName) => {
 };
 
 console.log(findMentorForModule("javascript"));
+
+export { possibleMentorsForModule, findMentorForModule };

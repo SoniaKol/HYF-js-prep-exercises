@@ -58,3 +58,5 @@ const getActiveClasses = () => {
 };
 
 console.log(getActiveClasses());
+
+export { getPeopleOfClass, getActiveClasses };
